@@ -11,7 +11,7 @@ module EnumerableExtension
 	end
 end
 
-Array.include EnumerableExtension
+Array.send :include, EnumerableExtension
 
 describe '#at_most' do
 
