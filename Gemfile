@@ -1,5 +1,4 @@
 source 'https://rubygems.org'
 
-ruby '1.8.7'
-
-gem 'rspec'
+# Specify your gem's dependencies in limit_detectors.gemspec
+gemspec
