@@ -1,6 +1,6 @@
 require 'rspec'
 
-module EnumerableExtension
+module LimitDetectors
   def at_most(limit)
 
     count = inject(0){ |res, el|
@@ -11,7 +11,7 @@ module EnumerableExtension
   end
 end
 
-Array.send :include, EnumerableExtension
+Array.send :include, LimitDetectors
 
 describe '#at_most' do
 
