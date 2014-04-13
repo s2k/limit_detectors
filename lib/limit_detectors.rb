@@ -1,5 +1,12 @@
 require "limit_detectors/version"
 
 module LimitDetectors
-  # Your code goes here...
+  def at_most(limit)
+
+    count = inject(0){ |res, el|
+      res += 1 if yield el
+      res
+    }
+    count <= limit
+  end
 end
