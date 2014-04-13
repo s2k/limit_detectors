@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = LimitDetectors::VERSION
   spec.authors       = ["Stephan Kämper"]
   spec.email         = ["the.tester@seasidetesting.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{Detect certain conditions of elements of an Enumerable object}
+  spec.description   = %q{Some methods to detect whether an Enumberable object contains a constrained number of elements that match a given condition.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
