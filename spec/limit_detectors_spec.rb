@@ -1,5 +1,4 @@
 require 'spec_helper'
-require File.join(File.dirname(__FILE__), '..', 'lib', 'limit_detectors')
 
 Array.send :include, LimitDetectors
 
