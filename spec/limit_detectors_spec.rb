@@ -4,7 +4,7 @@ Array.send :include, LimitDetectors
 
 describe '#at_most' do
 
-  it 'is nil for an empty Array' do
+  it 'is true for an empty Array' do
     expect([].at_most(5){ true }).to be_true
   end
 
