@@ -23,7 +23,21 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+In your code you can `require 'limit_detectors'` then define you classes (or use built-in classes like Array, Hash or other enumerable objects),
+exdent these objects with LimitDetectors (or include the module in your class) and then call `at_most`
+on your object.
+
+For example:
+
+    $pry -I lib -r limit_detectors
+    [1] pry(main)> a = [1, 2, 3, 4, 5]
+    => [1, 2, 3, 4, 5]
+    [2] pry(main)> a.extend LimitDetectors
+    => [1, 2, 3, 4, 5]
+    [3] pry(main)> a.at_most(4){|e| e.odd?}
+    => true # There are indeed no more than 4 odd numbers in the array
+    [4] pry(main)> a.at_most(1){|e| e.even?}
+    => false # In fact there are two even numbers in the array
 
 ## Contributing
 
