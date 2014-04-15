@@ -2,9 +2,10 @@
 
 Some methods to detect whether an Enumberable object contains a constrained number of elements that match a given condition
 
-## Status on Travis
+## Stati
 
-[![Build Status](https://travis-ci.org/s2k/limit_detectors.svg?branch=master)](https://travis-ci.org/s2k/limit_detectors)
+* Travis CI: [![Build Status](https://travis-ci.org/s2k/limit_detectors.svg?branch=master)](https://travis-ci.org/s2k/limit_detectors)
+* Maintenance: [![Project Status](http://stillmaintained.com/s2k/limit_detectors.png)](http://stillmaintained.com/s2k/limit_detectors)
 
 ## Installation
 
