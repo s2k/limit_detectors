@@ -9,7 +9,7 @@ Gem::Specification.new do |spec|
   spec.authors       = ["Stephan Kämper"]
   spec.email         = ["the.tester@seasidetesting.com"]
   spec.summary       = %q{Detect certain conditions of elements of an Enumerable object}
-  spec.description   = %q{Some methods to detect whether an Enumberable object contains a constrained number of elements that match a given condition.}
+  spec.description   = %q{Some methods to detect whether an Enumerable object contains a constrained number of elements that match a given condition.}
   spec.homepage      = ""
   spec.license       = "MIT"
 
