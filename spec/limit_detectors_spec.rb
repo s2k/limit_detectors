@@ -35,3 +35,12 @@ describe 'Hash#at_most' do
     expect( h.at_most(3){|ky,vl| ky.match(/^b/) || vl > 1  }).to be_true
   end
 end
+
+
+describe 'Using an object that doesn\'t respond to #inject will raise an exception' do
+  object = Object.new
+  object.extend LimitDetectors
+  it 'will raise an exception, if it\'s sent #atmost' do
+    expect{ object.at_most(1){ |el| el.condition? } }.to raise_exception(NoMethodError, /undefined method .inject./)
+  end
+end
