@@ -39,6 +39,9 @@ For example:
     [4] pry(main)> a.at_most(1){|e| e.even?}
     => false # In fact there are two even numbers in the array
 
+Please note the current version of 0.0.something, which means the future releases
+may not be compatible with the current version.
+
 ## Contributing
 
 1. Fork it ( https://github.com/[my-github-username]/limit_detectors/fork )
@@ -46,3 +49,15 @@ For example:
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
+
+### Reporting a bug
+
+Please, provide answers to the following questions, when submitting a bug report:
+
+1. What's actually happening? What the observed behaviour?
+2. What's the expectation, i.e. what should have happened?
+3. Why did you expect this behaviour?
+
+If you provide an RSpec check that demonstrates the bug, would give extra good karma,
+especially in case of a minimal check, something that just demonstrates the bug without
+any (or much) overhead.
