@@ -1,4 +1,4 @@
-require "limit_detectors/version"
+require 'limit_detectors/version'
 
 module LimitDetectors
   def at_most(limit)

@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe 'Aray#at_most' do
+describe 'Array#at_most' do
   Array.send :include, LimitDetectors
 
   it 'is true for an empty Array' do
