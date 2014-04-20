@@ -23,9 +23,9 @@ Or install it yourself as:
 
 ## Usage
 
-In your code you can `require 'limit_detectors'` then define you classes (or use built-in classes like Array, Hash or other enumerable objects),
-exdent these objects with LimitDetectors (or include the module in your class) and then call `at_most`
-on your object.
+In your code you can `require 'limit_detectors'` then define you classes (or use built-in classes like Array, Hash
+or other enumerable objects), extend these objects with LimitDetectors (or include the module in your class) and
+then call `at_most` on your object.
 
 For example:
 
@@ -51,6 +51,7 @@ This gem is tested with these (MRI) Ruby versions:
 * 2.0
 * 2.1
 * 2.1.1
+
 
 
 ## Contributing
