@@ -4,9 +4,10 @@ Some methods to detect whether an Enumberable object contains a constrained numb
 
 ## Stati
 
+* Version: [![Gem Version](https://badge.fury.io/rb/limit_detectors.svg)](http://badge.fury.io/rb/limit_detectors)
 * Travis CI: [![Build Status](https://travis-ci.org/s2k/limit_detectors.svg?branch=master)](https://travis-ci.org/s2k/limit_detectors)
 * Maintenance: [![Project Status](http://stillmaintained.com/s2k/limit_detectors.png)](http://stillmaintained.com/s2k/limit_detectors)
-* Code CLimate: [![Code Climate](https://codeclimate.com/github/s2k/limit_detectors.png)](https://codeclimate.com/github/s2k/limit_detectors)
+* Code Climate: [![Code Climate](https://codeclimate.com/github/s2k/limit_detectors.png)](https://codeclimate.com/github/s2k/limit_detectors)
 
 ## Installation
 
