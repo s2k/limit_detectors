@@ -39,8 +39,19 @@ For example:
     [4] pry(main)> a.at_most(1){|e| e.even?}
     => false # In fact there are two even numbers in the array
 
+## Compatibility
+
 Please note the current version of 0.0.something, which means the future releases
 may not be compatible with the current version.
+
+This gem is tested with these (MRI) Ruby versions:
+
+* 1.8.7
+* 1.9.3
+* 2.0
+* 2.1
+* 2.1.1
+
 
 ## Contributing
 
