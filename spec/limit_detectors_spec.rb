@@ -48,7 +48,7 @@ describe '#at_least' do
     expect([1,1,1].at_least(3){|e| e == 1}).to be_true
   end
 
-  it 'is false if not enough elements meet the criterion' do
+  it 'is true if enough elements meet the criterion' do
     expect([1, 2, 4].at_least(1){|e| e.even?}).to be_true
   end
 
