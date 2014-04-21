@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 
-describe 'Array#at_most' do
+describe '#at_most' do
   Array.send :include, LimitDetectors
 
   it 'is true for an empty Array' do
@@ -25,15 +25,14 @@ describe 'Array#at_most' do
     expect(r.at_most(0){ |i| i > 2 }).to be_true
   end
 
-end
-
-
-describe 'Hash#at_most' do
-  Hash.send :include, LimitDetectors
-  it 'detects a condition based on key as well as value properties' do
-    h = { 'foo' => 1, 'bar' => 4, 'baz' => 5, 'bum' => 1, 'fum' => 0}
-    expect( h.at_most(3){|ky,vl| ky.match(/^b/) || vl > 1  }).to be_true
+  describe 'Hash#at_most' do
+    Hash.send :include, LimitDetectors
+    it 'detects a condition based on key as well as value properties' do
+      h = { 'foo' => 1, 'bar' => 4, 'baz' => 5, 'bum' => 1, 'fum' => 0}
+      expect( h.at_most(3){|ky,vl| ky.match(/^b/) || vl > 1  }).to be_true
+    end
   end
+
 end
 
 
