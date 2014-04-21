@@ -1,8 +1,8 @@
 require 'spec_helper'
 
+Array.send :include, LimitDetectors
 
 describe '#at_most' do
-  Array.send :include, LimitDetectors
 
   it 'is true for an empty Array' do
     expect([].at_most(5){ true }).to be_true
@@ -35,6 +35,31 @@ describe '#at_most' do
 
 end
 
+describe '#at_least' do
+  it 'is true for an empty Array' do
+    expect([].at_least(1){ true }).to be_false
+  end
+
+  it 'is true if the criterion is met once' do
+    expect(["it's there"].at_least(1){ |el| el == "it's there"}).to be_true
+  end
+
+  it 'is true if all elements meet the criterion and the size is the given maximum number' do
+    expect([1,1,1].at_least(3){|e| e == 1})
+  end
+
+  it 'is false if not enough elements meet the criterion' do
+    expect([1, 2, 4].at_least(1){|e| e.even?}).to be_true
+  end
+
+  it 'is true if 0 elements are expected to match' do
+    r = Array.new(10){|i|i}
+    pp r
+    expect(r.at_least(7){ |i| i > 2 }).to be_true
+    expect(r.at_least(8){ |i| i > 2 }).to be_false
+  end
+
+end
 
 describe 'Using an object that doesn\'t respond to #inject will raise an exception' do
   object = Object.new
