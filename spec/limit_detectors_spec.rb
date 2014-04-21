@@ -44,15 +44,15 @@ describe '#at_least' do
     expect(["it's there"].at_least(1){ |el| el == "it's there"}).to be_true
   end
 
-  it 'is true if all elements meet the criterion and the size is the given maximum number' do
-    expect([1,1,1].at_least(3){|e| e == 1})
+  it 'is true if all elements meet the criterion and the size is the given minimum number' do
+    expect([1,1,1].at_least(3){|e| e == 1}).to be_true
   end
 
   it 'is false if not enough elements meet the criterion' do
     expect([1, 2, 4].at_least(1){|e| e.even?}).to be_true
   end
 
-  it 'is true if 0 elements are expected to match' do
+  it 'is true if there are enough elements to match' do
     r = Array.new(10){|i|i}
     expect(r.at_least(7){ |i| i > 2 }).to be_true
     expect(r.at_least(8){ |i| i > 2 }).to be_false
