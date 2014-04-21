@@ -54,7 +54,6 @@ describe '#at_least' do
 
   it 'is true if 0 elements are expected to match' do
     r = Array.new(10){|i|i}
-    pp r
     expect(r.at_least(7){ |i| i > 2 }).to be_true
     expect(r.at_least(8){ |i| i > 2 }).to be_false
   end
