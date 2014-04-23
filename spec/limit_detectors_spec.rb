@@ -36,11 +36,22 @@ describe '#at_most' do
 end
 
 describe '#at_least' do
-  it 'is true for an empty Array' do
+  it 'is false for an empty Array' do
     expect([].at_least(1){ true }).to be_false
+    expect([].at_least(1){ false }).to be_false
   end
 
-  it 'is true if the criterion is met once' do
+  it 'is true if the expected number is 0 and Array is empty' do
+    expect([].at_least(0){ true }).to be_true
+    expect([].at_least(0){ false }).to be_true
+  end
+
+  it 'is false if the container ist smaller than the expected number' do
+    size = 10
+    expect(Array.new(10).at_least(size + 1){true}).to be_false
+  end
+
+  it 'is true if the criterion is met and expected once' do
     expect(["it's there"].at_least(1){ |el| el == "it's there"}).to be_true
   end
 
@@ -49,7 +60,7 @@ describe '#at_least' do
   end
 
   it 'is true if enough elements meet the criterion' do
-    expect([1, 2, 4].at_least(1){|e| e.even?}).to be_true
+    expect([1, 2, 4, 8].at_least(2){|e| e.even?}).to be_true
   end
 
   it 'is true if there are enough elements to match' do
