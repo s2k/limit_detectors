@@ -48,13 +48,13 @@ may not be compatible with the current version.
 
 This gem is tested with these (MRI) Ruby versions:
 
-* 1.8.7
-* 1.9.3
-* 2.0
-* 2.1
-* 2.1.1
+* 1.8.7,
+* 1.9.3,
+* 2.0,
+* 2.1,
+* 2.1.1,
 
-
+as well as current version of Jruby and Rubinius.
 
 ## Contributing
 
