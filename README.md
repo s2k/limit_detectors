@@ -27,7 +27,7 @@ Or install it yourself as:
 
 In your code you can `require 'limit_detectors'` then define you classes (or use built-in classes like Array, Hash
 or other enumerable objects), extend these objects with LimitDetectors (or include the module in your class) and
-then call `at_most` on your object.
+then call `at_most?` (or àt_least?') on your object.
 
 For example:
 
@@ -36,9 +36,9 @@ For example:
     => [1, 2, 3, 4, 5]
     [2] pry(main)> a.extend LimitDetectors
     => [1, 2, 3, 4, 5]
-    [3] pry(main)> a.at_most(4){|e| e.odd?}
+    [3] pry(main)> a.at_most?(4){|e| e.odd?}
     => true # There are indeed no more than 4 odd numbers in the array
-    [4] pry(main)> a.at_most(1){|e| e.even?}
+    [4] pry(main)> a.at_most?(1){|e| e.even?}
     => false # In fact there are two even numbers in the array
 
 ## Compatibility
@@ -54,7 +54,7 @@ This gem is tested with these (MRI) Ruby versions:
 * 2.1,
 * 2.1.1,
 
-as well as current version of Jruby and Rubinius.
+as well as current version of JRuby and Rubinius.
 
 ## Contributing
 
