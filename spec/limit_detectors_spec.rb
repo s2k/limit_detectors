@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'set'
 
 Array.send :include, LimitDetectors
 
@@ -7,6 +8,9 @@ describe '#at_most' do
   it 'is true for an empty Array' do
     expect(Kernel).to_not receive(:warn)
     expect([].at_most?(5){ true }).to be_true
+    expect([].at_most?(0) {      }).to be_true
+    expect([].at_most?(1) { true }).to be_true
+    expect([].at_most?(5) { :foo }).to be_true
   end
 
   it 'is true if the criterion is met once' do
@@ -37,15 +41,15 @@ describe '#at_most' do
 end
 
 describe '#at_least' do
-  it 'is false for an empty Array' do
+
+  it 'is false for an empty Array, if at least one is expected' do
     expect(Kernel).to_not receive(:warn)
     expect([].at_least?(1){ true }).to be_false
-    expect([].at_least?(1){ false }).to be_false
   end
 
   it 'is true if the expected number is 0 and Array is empty' do
     expect([].at_least?(0){ true }).to be_true
-    expect([].at_least?(0){ false }).to be_true
+    expect({}.at_least?(0){ false }).to be_true
   end
 
   it 'is false if the container ist smaller than the expected number' do
@@ -54,6 +58,18 @@ describe '#at_least' do
   end
 
   it 'is true if the criterion is met and expected once' do
+    expect(["it's there"].at_least?(1){ |el| el == "it's there"}).to be_true
+  end
+
+  it 'is false for an empty Array if you expect at leat 1' do
+    expect([].at_least?(1){ true }).to be_false
+  end
+
+  it 'is true for an empty Array if you expect at leat 0' do
+    expect([].at_least?(0){  }).to be_true
+  end
+
+  it 'is true if the criterion is met once' do
     expect(["it's there"].at_least?(1){ |el| el == "it's there"}).to be_true
   end
 
@@ -73,6 +89,29 @@ describe '#at_least' do
 
 end
 
+describe '#ocurrences_of' do
+  context 'collection with content' do
+    Set.send :include, LimitDetectors
+    subject{ Set.new( [1, 2, 3, 4, 5, 6, 7]) }
+
+    it('counts 3 even numbers')     { expect( subject.ocurrences_of &:even?).to     be 3 }
+    it('counts 4 odd numbers')      { expect( subject.ocurrences_of &:odd?).to      be 4 }
+    it('counts no number < 0')      { expect( subject.ocurrences_of{ |e| e < 0}).to be 0 }
+    it('counts 7 positive numbers') { expect( subject.ocurrences_of{ |e| e > 0}).to be 7 }
+  end
+
+  context 'empty collection' do
+    it 'counts 0 for any empty collection' do
+      [[], Set.new, {}].each do | obj |
+        expect(obj.ocurrences_of {true}).to be(0), "Expected to count 0, for an empty #{obj.class}"
+      end
+    end
+  end
+
+  it('doen\'t return nil') { expect([1].ocurrences_of {}).not_to be_nil }
+end
+
+
 describe 'Using an object that doesn\'t respond to #inject will raise an exception' do
   object = Object.new
   object.extend LimitDetectors
@@ -82,13 +121,21 @@ describe 'Using an object that doesn\'t respond to #inject will raise an excepti
 end
 
 describe 'Give a warning, if non-predicate versions are used' do
-  it 'sends message Kernel.warn, if old-style method is used for at_most' do
+  it 'yields a warning for old-style at_most' do
     expect(Kernel).to receive(:warn).with(/'at_most'.+deprecated.+'at_most\?'/)
     [1,2,4,8].at_most(2) {|e| e.even?}
   end
 
-  it 'sends message Kernel.warn, if old-style method is used for at_least' do
+  it 'yields a warning for old-style at_least' do
     expect(Kernel).to receive(:warn).with(/'at_least'.+deprecated.+'at_least\?'/)
     [1,2,4,8].at_least(2) {|e| e.even?}
+  end
+  end
+
+describe 'When the provided block raises an exception' do
+  subject{ [1] }
+  it 'passes up the stack unchanged' do
+    expect{ subject.at_most?(1) { raise ArgumentError, 'BoomError' } }.to raise_error(ArgumentError, 'BoomError')
+    expect{ subject.ocurrences_of { raise ArgumentError, 'BoomError'} }.to raise_error(ArgumentError, 'BoomError')
   end
 end
