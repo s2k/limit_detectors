@@ -9,8 +9,8 @@ describe '#at_most' do
     expect(Kernel).to_not receive(:warn)
     expect([].at_most?(5){ true }).to be_true
     expect([].at_most?(0){ true }).to be_true
-    expect([].at_most?(1) { true }).to be_true
-    expect([].at_most?(5) { :foo }).to be_true
+    expect([].at_most?(1){ true }).to be_true
+    expect([].at_most?(5){ :foo }).to be_true
   end
 
   it 'is true if the criterion is met once' do
