@@ -2,13 +2,13 @@ require 'limit_detectors/version'
 
 module LimitDetectors
 
-  # Deprecated, use at_mmost? instead
+  # Deprecated, use at_most? instead
   def at_most(limit, &block)
     Kernel.warn "'at_most' is deprecated, use 'at_most?' instead"
     at_most? limit, &block
   end
 
-  # Deprecated, use at_mmost? instead
+  # Deprecated, use at_most? instead
   def at_least(limit, &block)
     Kernel.warn "'at_least' is deprecated, use 'at_least?' instead"
     at_least? limit, &block
