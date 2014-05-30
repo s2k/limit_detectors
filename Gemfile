@@ -7,6 +7,7 @@ gemspec
 # To support Rubinius on Travis-CI
 platforms :rbx do
   gem 'racc'
-  gem 'rubysl', '~> 2.0'
+  gem 'minitest'
+  gem 'rubysl'#, '~> 2.0'
   gem 'psych'
 end
