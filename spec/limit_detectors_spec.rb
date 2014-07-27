@@ -112,10 +112,10 @@ describe '#ocurrences_of' do
 end
 
 
-describe 'Using an object that doesn\'t respond to #inject will raise an exception' do
+describe 'Using an object that doesn\'t respond to #inject' do
   object = Object.new
   object.extend LimitDetectors
-  it 'will raise an exception, if it\'s sent #atmost' do
+  it 'will raise an exception, if it\'s sent #at_most' do
     expect{ object.at_most?(1){ |el| el.condition? } }.to raise_exception(NoMethodError, /undefined method .inject./)
   end
 end
