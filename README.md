@@ -54,7 +54,7 @@ This gem is tested with these (MRI) Ruby versions:
 * 2.1,
 * 2.1.1,
 
-as well as current version of JRuby and Rubinius.
+as well as current version of JRuby and Rubinius (2.2.10)
 
 ## Contributing
 
