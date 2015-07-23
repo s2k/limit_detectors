@@ -8,7 +8,7 @@ module LimitDetectors
     at_most? limit, &block
   end
 
-  # Deprecated, use at_most? instead
+  # Deprecated, use at_least? instead
   def at_least(limit, &block)
     Kernel.warn "'at_least' is deprecated, use 'at_least?' instead"
     at_least? limit, &block
