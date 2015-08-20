@@ -2,12 +2,15 @@
 
 Some methods to detect whether an Enumberable object contains a constrained number of elements that match a given condition
 
+A second reason to create this gem is to explore various other services -- see the status list below.
+
 ## Stati
 
 * Version: [![Gem Version](https://badge.fury.io/rb/limit_detectors.svg)](http://badge.fury.io/rb/limit_detectors)
 * Travis CI: [![Build Status](https://travis-ci.org/s2k/limit_detectors.svg?branch=master)](https://travis-ci.org/s2k/limit_detectors)
 * Maintenance: [![Project Status](http://stillmaintained.com/s2k/limit_detectors.png)](http://stillmaintained.com/s2k/limit_detectors)
 * Code Climate: [![Code Climate](https://codeclimate.com/github/s2k/limit_detectors.png)](https://codeclimate.com/github/s2k/limit_detectors)
+* Codeship: [![Codeship Status for s2k/limit_detectors](https://codeship.com/projects/4313f520-2939-0133-bdc1-76c73dc375da/status?branch=master)](https://codeship.com/projects/97926)
 
 ## Installation
 
