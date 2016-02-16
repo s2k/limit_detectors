@@ -8,7 +8,6 @@ A second reason to create this gem is to explore various other services -- see t
 
 * Version: [![Gem Version](https://badge.fury.io/rb/limit_detectors.svg)](http://badge.fury.io/rb/limit_detectors)
 * Travis CI: [![Build Status](https://travis-ci.org/s2k/limit_detectors.svg?branch=master)](https://travis-ci.org/s2k/limit_detectors)
-* Maintenance: [![Project Status](http://stillmaintained.com/s2k/limit_detectors.png)](http://stillmaintained.com/s2k/limit_detectors)
 * Code Climate: [![Code Climate](https://codeclimate.com/github/s2k/limit_detectors.png)](https://codeclimate.com/github/s2k/limit_detectors)
 * Codeship: [![Codeship Status for s2k/limit_detectors](https://codeship.com/projects/4313f520-2939-0133-bdc1-76c73dc375da/status?branch=master)](https://codeship.com/projects/97926)
 * Circle CI: [![Circle CI](https://circleci.com/gh/s2k/limit_detectors.svg?style=svg)](https://circleci.com/gh/s2k/limit_detectors)
@@ -53,12 +52,12 @@ may not be compatible with the current version.
 
 This gem is tested with these (MRI) Ruby versions:
 
-  - 1.9.3
-  - 1.8.7
-  - 2.0
-  - 2.1
-  - 2.2.2
-  - jruby
+ - 1.9.3
+ - 2.0
+ - 2.1
+ - 2.2.4
+ - 2.3.0
+ - jruby
 
 as well as a current version of JRuby.
 
