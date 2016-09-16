@@ -50,14 +50,15 @@ For example:
 Please note the current version of 0.0.something, which means the future releases
 may not be compatible with the current version.
 
-This gem is tested with these (MRI) Ruby versions:
+This gem is tested with these Ruby versions (MRI, unless JRuby):
 
- - 1.9.3
- - 2.0
- - 2.1
- - 2.2.4
- - 2.3.0
- - jruby
+  - 2.0
+  - 2.1
+  - 2.2.4
+  - 2.3.0
+  - 2.3.1
+  - 2.4.0-preview1
+  - jruby
 
 as well as a current version of JRuby.
 
