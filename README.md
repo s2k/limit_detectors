@@ -51,13 +51,10 @@ may not be compatible with the current version.
 
 This gem is tested with these Ruby versions (MRI, unless JRuby):
 
-  - 2.0
-  - 2.1
-  - 2.2.4
-  - 2.3.0
-  - 2.3.1
-  - 2.4.0-preview1
-  - jruby
+  - 2.1.10
+  - 2.2.7
+  - 2.3.4
+  - 2.4.1
 
 as well as a current version of JRuby.
 
