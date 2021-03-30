@@ -1,4 +1,3 @@
-require 'spec_helper'
 require 'set'
 
 Array.send :include, LimitDetectors
