@@ -50,9 +50,9 @@ may not be compatible with the current version.
 
 This gem is tested with these Ruby versions (MRI, unless JRuby):
 
-  - 2.5.8
-  - 2.6.6
-  - 2.7.1
+  - 2.6.7
+  - 2.7.3
+  - 3.0.1
 
 as well as a current version of JRuby.
 
