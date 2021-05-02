@@ -1,5 +1,6 @@
-# coding: utf-8
-lib = File.expand_path('../lib', __FILE__)
+# frozen_string_literal: true
+
+lib = File.expand_path('lib', __dir__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'limit_detectors/version'
 
@@ -8,8 +9,8 @@ Gem::Specification.new do |spec|
   spec.version       = LimitDetectors::VERSION
   spec.authors       = ['Stephan Kämper']
   spec.email         = ['the.tester@seasidetesting.com']
-  spec.summary       = %q{Detect certain conditions of elements of an Enumerable object}
-  spec.description   = %q{Some methods to detect whether an Enumerable object contains a constrained number of elements that match a given condition.}
+  spec.summary       = 'Detect certain conditions of elements of an Enumerable object'
+  spec.description   = 'Some methods to detect whether an Enumerable object contains a constrained number of elements that match a given condition.'
   spec.homepage      = ''
   spec.license       = 'MIT'
 
@@ -19,8 +20,8 @@ Gem::Specification.new do |spec|
   spec.require_paths = ['lib']
 
   spec.add_development_dependency 'bundler'
-  spec.add_development_dependency 'rake', '~> 13.0.3'
-  spec.add_development_dependency 'rspec', '~> 3.10'
   spec.add_development_dependency 'pry', '~> 0.14.1'
   spec.add_development_dependency 'pry-doc', '~> 1.1.0'
+  spec.add_development_dependency 'rake', '~> 13.0.3'
+  spec.add_development_dependency 'rspec', '~> 3.10'
 end
