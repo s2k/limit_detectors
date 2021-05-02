@@ -27,26 +27,47 @@ Or install it yourself as:
 
 ## Usage
 
-In your code you can `require 'limit_detectors'` then define you classes (or use built-in classes like Array, Hash
-or other enumerable objects), extend these objects with LimitDetectors (or include the module in your class) and
-then call `at_most?` (or àt_least?') on your object.
+In your code, you can `require 'limit_detectors'` then define your classes and `include` module `LimitDetectors` in your class, or create enumerable objects and `extend` these objects with `LimitDetectors`. Then call `at_most?` (or `t_least?`) on your object.
 
-For example:
+For example using `pry`(you can use `irb` as well) you can do this:
 
-    $pry -I lib -r limit_detectors
-    [1] pry(main)> a = [1, 2, 3, 4, 5]
-    => [1, 2, 3, 4, 5]
-    [2] pry(main)> a.extend LimitDetectors
-    => [1, 2, 3, 4, 5]
-    [3] pry(main)> a.at_most?(4){|e| e.odd?}
-    => true # There are indeed no more than 4 odd numbers in the array
-    [4] pry(main)> a.at_most?(1){|e| e.even?}
-    => false # In fact there are two even numbers in the array
+```ruby
+$pry -I lib -r limit_detectors
+[1] pry(main)> a = [1, 2, 3, 4, 5]
+=> [1, 2, 3, 4, 5]
+[2] pry(main)> a.extend LimitDetectors
+=> [1, 2, 3, 4, 5]
+[3] pry(main)> a.at_most?(4){|e| e.odd?}
+=> true # There are indeed no more than 4 odd numbers in the array
+[4] pry(main)> a.at_most?(1){|e| e.even?}
+=> false # In fact there are two even numbers in the array
+```
+
+In code the usage may look like this (see example/example.rb for the file):
+
+```ruby
+require 'limit_detectors'
+
+class Example
+  include Enumerable
+  def each
+    ('a'..'d').each { |c| yield c }
+  end
+end
+
+e = Example.new
+e.extend LimitDetectors
+
+
+puts e.at_least?(1) { |c| 'f' == c }
+puts e.at_least?(1) { |c| 'b' == c }
+puts e.at_most?(0) { |c| 'b' == c }
+puts e.at_most?(42) { |c| 'b' == c }
+```
+
+
 
 ## Compatibility
-
-Please note the current version of 0.0.something, which means the future releases
-may not be compatible with the current version.
 
 This gem is tested with these Ruby versions (MRI, unless JRuby):
 
@@ -58,20 +79,22 @@ as well as a current version of JRuby.
 
 ## Contributing
 
-1. Fork it ( https://github.com/[my-github-username]/limit_detectors/fork )
+1. Fork it ( https://github.com/[my-github-username]/limit_detectors/fork)
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
+A more detailed descritpion is at https://opensource.com/article/19/7/create-pull-request-github
+
 ### Reporting a bug
 
 Please, provide answers to the following questions, when submitting a bug report:
 
-1. What's actually happening? What the observed behaviour?
-2. What's the expectation, i.e. what should have happened?
+1. What's _actually_ happening? What is the observed behaviour?
+2. What's the _expectation_, i.e. what should have happened?
 3. Why did you expect this behaviour?
 
-If you provide an RSpec check that demonstrates the bug, would give extra good karma,
+If you provide an `RSpec` check that demonstrates the bug, would give extra good karma,
 especially in case of a minimal check, something that just demonstrates the bug without
 any (or much) overhead.
