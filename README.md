@@ -4,6 +4,7 @@ Some methods to detect whether an Enumberable object contains a constrained numb
 
 A second reason to create this gem is to explore various other services -- see the status list below.
 
+
 ## Stati
 
 * Version: [![Gem Version](https://badge.fury.io/rb/limit_detectors.svg)](http://badge.fury.io/rb/limit_detectors)
@@ -25,6 +26,7 @@ Or install it yourself as:
 
     $ gem install limit_detectors
 
+
 ## Usage
 
 In your code, you can `require 'limit_detectors'` then define your classes and `include` module `LimitDetectors` in your class, or create enumerable objects and `extend` these objects with `LimitDetectors`. Then call `at_most?` (or `t_least?`) on your object.
@@ -32,14 +34,21 @@ In your code, you can `require 'limit_detectors'` then define your classes and `
 For example using `pry`(you can use `irb` as well) you can do this:
 
 ```ruby
-$pry -I lib -r limit_detectors
+[3] pry(main)> a.at_most?(4){|e| e.odd?}
+=> true # There are indeed no more than 4 odd numbers in the array
+[4] pry(main)> a.at_most?(1){|e| e.even?}
+=> false # In fact there are two even numbers in the array
+
+$ pry -I lib -r limit_detectors
 [1] pry(main)> a = [1, 2, 3, 4, 5]
 => [1, 2, 3, 4, 5]
 [2] pry(main)> a.extend LimitDetectors
 => [1, 2, 3, 4, 5]
 [3] pry(main)> a.at_most?(4){|e| e.odd?}
 => true # There are indeed no more than 4 odd numbers in the array
-[4] pry(main)> a.at_most?(1){|e| e.even?}
+[4] pry(main)> a.at_most?(4, &:odd?)
+=> true # The same behaviour using a different notation
+[5] pry(main)> a.at_most?(1){|e| e.even?}
 => false # In fact there are two even numbers in the array
 ```
 
@@ -66,14 +75,13 @@ puts e.at_most?(42) { |c| 'b' == c }
 ```
 
 
-
 ## Compatibility
 
 This gem is tested with these Ruby versions (MRI, unless JRuby):
 
   - 2.6.7
   - 2.7.3
-  - 3.0.1
+  - 3.0.2
 
 as well as a current version of JRuby.
 
@@ -85,7 +93,8 @@ as well as a current version of JRuby.
 4. Push to the branch (`git push origin my-new-feature`)
 5. Create a new Pull Request
 
-A more detailed descritpion is at https://opensource.com/article/19/7/create-pull-request-github
+A more detailed description is at https://opensource.com/article/19/7/create-pull-request-github
+
 
 ### Reporting a bug
 
