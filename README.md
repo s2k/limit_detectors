@@ -5,7 +5,7 @@ Some methods to detect whether an Enumberable object contains a constrained numb
 A second reason to create this gem is to explore various other services -- see the status list below.
 
 
-## Stati
+## Status & Links
 
 * Version: [![Gem Version](https://badge.fury.io/rb/limit_detectors.svg)](http://badge.fury.io/rb/limit_detectors)
 * GitHub Actions: [![Main workflow: unit tests](https://github.com/s2k/limit_detectors/actions/workflows/ruby.yml/badge.svg)](https://github.com/s2k/limit_detectors/actions)
