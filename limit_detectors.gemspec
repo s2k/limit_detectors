@@ -24,4 +24,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency 'pry-doc', '~> 1.2.0'
   spec.add_development_dependency 'rake', '~> 13.0.6'
   spec.add_development_dependency 'rspec', '~> 3.10'
+  spec.metadata = {
+    'rubygems_mfa_required' => 'true'
+  }
 end
