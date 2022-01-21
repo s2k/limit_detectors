@@ -67,21 +67,19 @@ end
 e = Example.new
 e.extend LimitDetectors
 
-
 puts e.at_least?(1) { |c| 'f' == c }
 puts e.at_least?(1) { |c| 'b' == c }
 puts e.at_most?(0) { |c| 'b' == c }
 puts e.at_most?(42) { |c| 'b' == c }
 ```
 
-
 ## Compatibility
 
 This gem is tested with these Ruby versions (MRI, unless JRuby):
 
-  - 2.7
-  - 3.0
-  - 3.1
+  - 2.7.x
+  - 3.0.x
+  - 3.1.x
 
 as well as a current version of JRuby and TruffleRuby
 
@@ -95,6 +93,18 @@ as well as a current version of JRuby and TruffleRuby
 
 A more detailed description is at https://opensource.com/article/19/7/create-pull-request-github
 
+### Tip
+
+After `bundle install` (or `update`) you can now use [`Guard`](https://github.com/guard/guard).
+
+In the project directory run 
+
+```
+bundle exec guard
+```
+
+Now, RSpec should run when files are saved (or changed otherwise).
+Note though, that this may or may not work out-of-the-box on all operating systems.
 
 ### Reporting a bug
 
