@@ -8,7 +8,9 @@ A second reason to create this gem is to explore various other services -- see t
 ## Status & Links
 
 * Version: [![Gem Version](https://badge.fury.io/rb/limit_detectors.svg)](http://badge.fury.io/rb/limit_detectors)
-* GitHub Actions: [![Main workflow: unit tests](https://github.com/s2k/limit_detectors/actions/workflows/ruby.yml/badge.svg)](https://github.com/s2k/limit_detectors/actions)
+* GitHub Actions: 
+  * [![Main workflow: unit tests](https://github.com/s2k/limit_detectors/actions/workflows/ruby.yml/badge.svg)](https://github.com/s2k/limit_detectors/actions)
+  * [![CodeQL](https://github.com/s2k/limit_detectors/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/s2k/limit_detectors/actions/workflows/codeql-analysis.yml)
 * Code Climate: [![Maintainability](https://api.codeclimate.com/v1/badges/f29deb5bcd4e2ad44d25/maintainability)](https://codeclimate.com/github/s2k/limit_detectors/maintainability)
 
 
