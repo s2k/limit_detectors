@@ -21,11 +21,11 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency 'bundler'
   spec.add_development_dependency 'guard-rspec'
-  spec.add_development_dependency 'pry', '~> 0.14.1'
-  spec.add_development_dependency 'pry-doc', '~> 1.2.0'
+  spec.add_development_dependency 'pry', '~> 0.14.2'
+  spec.add_development_dependency 'pry-doc', '~> 1.4.0'
   spec.add_development_dependency 'rake', '~> 13.0.6'
   spec.add_development_dependency 'rb-fsevent'
-  spec.add_development_dependency 'rspec', '~> 3.10'
+  spec.add_development_dependency 'rspec', '~> 3.12'
   spec.add_development_dependency 'terminal-notifier'
   spec.add_development_dependency 'terminal-notifier-guard'
 
