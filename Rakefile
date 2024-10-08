@@ -7,6 +7,7 @@ RSpec::Core::RakeTask.new :spec
 
 task default: :spec
 
+desc 'Open a pry consilo with the gem loaded'
 task :console do
-  exec 'irb -I ./lib -r limit_detectors'
+  exec 'pry -I ./lib -r limit_detectors'
 end
