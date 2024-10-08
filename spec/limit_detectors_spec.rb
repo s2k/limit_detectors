@@ -22,7 +22,7 @@ describe '#at_most' do
   end
 
   it 'is false if not enough elements meet the criterion' do
-    expect([1, 2, 4]).not_to be_at_most(1, &:even?)
+    expect([1, 2, 4].at_most(1, &:even?)).not_to be_truthy
   end
 
   it 'is true if 0 elements are expected to match' do
@@ -30,8 +30,8 @@ describe '#at_most' do
     expect(r).to be_at_most(0) { |i| i > 2 }
   end
 
-  describe 'Hash#at_most' do
-    Hash.include LimitDetectors
+  describe Hash, '#at_most' do
+    described_class.include LimitDetectors
     it 'detects a condition based on key as well as value properties' do
       h = { 'foo' => 1, 'bar' => 4, 'baz' => 5, 'bum' => 1, 'fum' => 0 }
       expect(h).to be_at_most(3) { |ky, vl| ky.match(/^b/) || vl > 1 }
@@ -121,7 +121,7 @@ end
 
 describe LimitDetectors, "Using an object that doesn't respond to #inject" do
   object = Object.new
-  object.extend LimitDetectors
+  object.extend described_class
   it "raises an exception, if it's sent #at_most" do
     expect { object.at_most?(1, &:condition?) }.to raise_exception(NoMethodError, /undefined method .inject./)
   end
