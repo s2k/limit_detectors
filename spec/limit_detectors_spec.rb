@@ -7,14 +7,14 @@ Array.include LimitDetectors
 describe '#at_most' do
   it 'is true for an empty Array' do
     expect(Kernel).to_not receive(:warn)
-    expect([].at_most?(5) { true }).to be_truthy
-    expect([].at_most?(0) { true }).to be_truthy
-    expect([].at_most?(1) { true }).to be_truthy
-    expect([].at_most?(5) { :foo }).to be_truthy
+    expect([]).to be_at_most(5) { true }
+    expect([]).to be_at_most(0) { true }
+    expect([]).to be_at_most(1) { true }
+    expect([]).to be_at_most(5) { :foo }
   end
 
   it 'is true if the criterion is met once' do
-    expect(["it's there"].at_most?(1) { |el| el == "it's there" }).to be_truthy
+    expect(["it's there"]).to be_at_most(1) { |el| el == "it's there" }
   end
 
   it 'is true if all elements meet the criterion and the size is the given maximum number' do
@@ -22,19 +22,19 @@ describe '#at_most' do
   end
 
   it 'is false if not enough elements meet the criterion' do
-    expect([1, 2, 4].at_most?(1, &:even?)).to be_falsey
+    expect([1, 2, 4]).not_to be_at_most(1, &:even?)
   end
 
   it 'is true if 0 elements are expected to match' do
     r = Array.new(10) { rand }
-    expect(r.at_most?(0) { |i| i > 2 }).to be_truthy
+    expect(r).to be_at_most(0) { |i| i > 2 }
   end
 
   describe 'Hash#at_most' do
     Hash.include LimitDetectors
     it 'detects a condition based on key as well as value properties' do
       h = { 'foo' => 1, 'bar' => 4, 'baz' => 5, 'bum' => 1, 'fum' => 0 }
-      expect(h.at_most?(3) { |ky, vl| ky.match(/^b/) || vl > 1 }).to be_truthy
+      expect(h).to be_at_most(3) { |ky, vl| ky.match(/^b/) || vl > 1 }
     end
   end
 end
@@ -42,47 +42,47 @@ end
 describe '#at_least' do
   it 'is false for an empty Array, if at least one is expected' do
     expect(Kernel).to_not receive(:warn)
-    expect([].at_least?(1) { true }).to be_falsey
+    expect([]).not_to be_at_least(1) { true }
   end
 
   it 'is true if the expected number is 0 and Array is empty' do
-    expect([].at_least?(0) { true }).to be_truthy
-    expect({}.at_least?(0) { false }).to be_truthy
+    expect([]).to be_at_least(0) { true }
+    expect({}).to be_at_least(0) { false }
   end
 
   it 'is false if the container ist smaller than the expected number' do
     size = 10
-    expect(Array.new(10).at_least?(size + 1) { true }).to be_falsey
+    expect(Array.new(10)).not_to be_at_least(size + 1) { true }
   end
 
   it 'is true if the criterion is met and expected once' do
-    expect(["it's there"].at_least?(1) { |el| el == "it's there" }).to be_truthy
+    expect(["it's there"]).to be_at_least(1) { |el| el == "it's there" }
   end
 
   it 'is false for an empty Array if you expect at least 1' do
-    expect([].at_least?(1) { true }).to be_falsey
+    expect([]).not_to be_at_least(1) { true }
   end
 
   it 'is true for an empty Array if you expect at least 0' do
-    expect([].at_least?(0) {}).to be_truthy
+    expect([]).to be_at_least(0) {}
   end
 
   it 'is true if the criterion is met once' do
-    expect(["it's there"].at_least?(1) { |el| el == "it's there" }).to be_truthy
+    expect(["it's there"]).to be_at_least(1) { |el| el == "it's there" }
   end
 
   it 'is true if all elements meet the criterion and the size is the given minimum number' do
-    expect([1, 1, 1].at_least?(3) { |e| e == 1 }).to be_truthy
+    expect([1, 1, 1]).to be_at_least(3) { |e| e == 1 }
   end
 
   it 'is true if enough elements meet the criterion' do
-    expect([1, 2, 4, 8].at_least?(2, &:even?)).to be_truthy
+    expect([1, 2, 4, 8]).to be_at_least(2, &:even?)
   end
 
   it 'is true if there are enough elements to match' do
     r = Array.new(10) { |i| i }
-    expect(r.at_least?(7) { |i| i > 2 }).to be_truthy
-    expect(r.at_least?(8) { |i| i > 2 }).to be_falsey
+    expect(r).to be_at_least(7) { |i| i > 2 }
+    expect(r).not_to be_at_least(8) { |i| i > 2 }
   end
 end
 
@@ -131,8 +131,11 @@ end
 describe 'When the provided block raises an exception' do
   subject { [1] }
 
-  it 'passes up the stack unchanged' do
+  it 'an exception in at_most? is passed up the stack' do
     expect { subject.at_most?(1) { raise ArgumentError, 'BoomError' } }.to raise_error(ArgumentError, 'BoomError')
+  end
+
+  it 'an exception in occurrences_of is passed up the stack' do
     expect { subject.occurrences_of { raise ArgumentError, 'BoomError' } }.to raise_error(ArgumentError, 'BoomError')
   end
 end
