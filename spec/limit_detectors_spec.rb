@@ -6,7 +6,7 @@ Array.include LimitDetectors
 
 describe '#at_most' do
   it 'is true for an empty Array' do
-    expect(Kernel).to_not receive(:warn)
+    expect(Kernel).not_to receive(:warn)
     expect([]).to be_at_most(5) { true }
     expect([]).to be_at_most(0) { true }
     expect([]).to be_at_most(1) { true }
@@ -18,7 +18,7 @@ describe '#at_most' do
   end
 
   it 'is true if all elements meet the criterion and the size is the given maximum number' do
-    expect([1, 1, 1].at_most?(3) { |e| e == 1 })
+    expect([1, 1, 1]).to be_at_most(3) { |e| e == 1 }
   end
 
   it 'is false if not enough elements meet the criterion' do
@@ -39,20 +39,27 @@ describe '#at_most' do
   end
 end
 
-describe '#at_least' do
+describe Array, '#at_least' do
   it 'is false for an empty Array, if at least one is expected' do
-    expect(Kernel).to_not receive(:warn)
-    expect([]).not_to be_at_least(1) { true }
+    expect(Kernel).not_to receive(:warn)
+    [].at_least?(2) { |i| i > 2 }
+  end
+
+  it 'is false for empty Arrays when one elements is expected' do
+    expect([]).not_to be_at_least(1) { false }
+  end
+
+  it 'is true if the expected number is 0 and Hash is empty' do
+    expect({}).to be_at_least(0) { false }
   end
 
   it 'is true if the expected number is 0 and Array is empty' do
     expect([]).to be_at_least(0) { true }
-    expect({}).to be_at_least(0) { false }
   end
 
   it 'is false if the container ist smaller than the expected number' do
     size = 10
-    expect(Array.new(10)).not_to be_at_least(size + 1) { true }
+    expect(described_class.new(size)).not_to be_at_least(size + 1) { true }
   end
 
   it 'is true if the criterion is met and expected once' do
@@ -68,7 +75,7 @@ describe '#at_least' do
   end
 
   it 'is true if the criterion is met once' do
-    expect(["it's there"]).to be_at_least(1) { |el| el == "it's there" }
+    expect(["it's there", "it's there"]).to be_at_least(1) { |el| el == "it's there" }
   end
 
   it 'is true if all elements meet the criterion and the size is the given minimum number' do
@@ -76,19 +83,23 @@ describe '#at_least' do
   end
 
   it 'is true if enough elements meet the criterion' do
-    expect([1, 2, 4, 8]).to be_at_least(2, &:even?)
+    expect([1, 2, 4, 8].at_least(2, &:even?)).to be_truthy
   end
 
-  it 'is true if there are enough elements to match' do
-    r = Array.new(10) { |i| i }
+  it 'is true if there are enough matching elements' do
+    r = described_class.new(10) { |i| i }
     expect(r).to be_at_least(7) { |i| i > 2 }
+  end
+
+  it 'is false if there are too few matching elements' do
+    r = described_class.new(10) { |i| i }
     expect(r).not_to be_at_least(8) { |i| i > 2 }
   end
 end
 
-describe '#ocurrences_of' do
+describe LimitDetectors, '#ocurrences_of' do
   context 'when the collection has some content' do
-    Set.include LimitDetectors
+    Set.include described_class
     subject { Set.new([1, 2, 3, 4, 5, 6, 7]) }
 
     it('counts 3 even numbers')     { expect(subject.occurrences_of(&:even?)).to be 3 }
@@ -108,10 +119,10 @@ describe '#ocurrences_of' do
   it("doesn't return nil") { expect([1].occurrences_of {}).not_to be_nil }
 end
 
-describe "Using an object that doesn't respond to #inject" do
+describe LimitDetectors, "Using an object that doesn't respond to #inject" do
   object = Object.new
   object.extend LimitDetectors
-  it 'will raise an exception, if it\'s sent #at_most' do
+  it "raises an exception, if it's sent #at_most" do
     expect { object.at_most?(1, &:condition?) }.to raise_exception(NoMethodError, /undefined method .inject./)
   end
 end
