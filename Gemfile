@@ -21,3 +21,5 @@ group :development, :test do
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
 end
+
+gem "reline", "~> 0.5.10"
