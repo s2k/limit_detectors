@@ -87,7 +87,7 @@ describe '#at_least' do
 end
 
 describe '#ocurrences_of' do
-  context 'collection with content' do
+  context 'when the collection has some content' do
     Set.include LimitDetectors
     subject { Set.new([1, 2, 3, 4, 5, 6, 7]) }
 
@@ -97,7 +97,7 @@ describe '#ocurrences_of' do
     it('counts 7 positive numbers') { expect(subject.occurrences_of { |e| e > 0 }).to be 7 }
   end
 
-  context 'empty collection' do
+  context 'with an empty collection' do
     it 'counts 0 for any empty collection' do
       [[], Set.new, {}].each do |obj|
         expect(obj.occurrences_of { true }).to be(0), "Expected to count 0, for an empty #{obj.class}"
@@ -130,6 +130,7 @@ end
 
 describe 'When the provided block raises an exception' do
   subject { [1] }
+
   it 'passes up the stack unchanged' do
     expect { subject.at_most?(1) { raise ArgumentError, 'BoomError' } }.to raise_error(ArgumentError, 'BoomError')
     expect { subject.occurrences_of { raise ArgumentError, 'BoomError' } }.to raise_error(ArgumentError, 'BoomError')
