@@ -1,6 +1,6 @@
 # LimitDetectors
 
-Some methods to detect whether an Enumberable object contains a constrained number of elements that match a given condition
+Some methods to detect whether an Enumerable object contains a constrained number of elements that match a given condition
 
 A second reason to create this gem is to explore various other services -- see the status list below.
 
@@ -8,7 +8,7 @@ A second reason to create this gem is to explore various other services -- see t
 ## Status & Links
 
 * Version: [![Gem Version](https://badge.fury.io/rb/limit_detectors.svg)](http://badge.fury.io/rb/limit_detectors)
-* GitHub Actions: 
+* GitHub Actions:
   * [![Main workflow: unit tests](https://github.com/s2k/limit_detectors/actions/workflows/ruby.yml/badge.svg)](https://github.com/s2k/limit_detectors/actions)
   * [![CodeQL](https://github.com/s2k/limit_detectors/actions/workflows/codeql-analysis.yml/badge.svg)](https://github.com/s2k/limit_detectors/actions/workflows/codeql-analysis.yml)
 * Code Climate: [![Maintainability](https://api.codeclimate.com/v1/badges/f29deb5bcd4e2ad44d25/maintainability)](https://codeclimate.com/github/s2k/limit_detectors/maintainability)
@@ -83,6 +83,7 @@ This gem is tested with these Ruby versions (MRI, unless JRuby):
   - 3.1.x
   - 3.2.x
   - 3.3.x
+  - 3.4.0-preview2
 
 as well as a current version of JRuby and TruffleRuby
 
@@ -100,7 +101,7 @@ A more detailed description is at https://opensource.com/article/19/7/create-pul
 
 After `bundle install` (or `update`) you can now use [`Guard`](https://github.com/guard/guard).
 
-In the project directory run 
+In the project directory run
 
 ```
 bundle exec guard
