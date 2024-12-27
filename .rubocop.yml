@@ -33,3 +33,8 @@ RSpec/MessageSpies:
 RSpec/DescribeClass:
   Enabled: false
 
+RSpec/MultipleDescribes:
+  Enabled: false
+
+RSpec/DescribeMethod:
+  Enabled: false
