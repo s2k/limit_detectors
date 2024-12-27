@@ -6,9 +6,30 @@ AllCops:
   NewCops: enable
   Exclude:
     - 'bin/**/*'
+  TargetRubyVersion: 3.1
 
 Style/EmptyMethod:
   Enabled: false
 
 Naming/VariableNumber:
   EnforcedStyle: snake_case
+
+Style/OpenStructUse:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: true
+  Max: 8
+
+Lint/EmptyBlock:
+  Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false
+
+RSpec/DescribeClass:
+  Enabled: false
+
