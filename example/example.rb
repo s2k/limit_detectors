@@ -2,6 +2,9 @@
 
 require 'limit_detectors'
 
+# A simple Example class to demonstrate how the
+# methods from limit_detectors can be used.
+#
 class Example
   include Enumerable
   def each(&)
