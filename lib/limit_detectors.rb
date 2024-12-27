@@ -2,6 +2,12 @@
 
 require 'limit_detectors/version'
 
+# LimitDetectors provides methods (that depend on `Enumerable` being present)
+# to detect if an `Enumerable` object complies to the specified limitation.
+# For example, there's a method #at_most that returns `true`if the given
+# enumerable object contains _at most_ the given number of elements that match
+# the given constrains (provided as a proc/lambda).
+#
 module LimitDetectors
   # Deprecated, use at_most? instead
   def at_most(limit, &block)
