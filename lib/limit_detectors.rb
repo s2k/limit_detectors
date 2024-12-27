@@ -10,27 +10,27 @@ require 'limit_detectors/version'
 #
 module LimitDetectors
   # Deprecated, use at_most? instead
-  def at_most(limit, &block)
+  def at_most(limit, &)
     Kernel.warn "'at_most' is deprecated, use 'at_most?' instead"
-    at_most? limit, &block
+    at_most? limit, &
   end
 
   # Deprecated, use at_least? instead
-  def at_least(limit, &block)
+  def at_least(limit, &)
     Kernel.warn "'at_least' is deprecated, use 'at_least?' instead"
-    at_least? limit, &block
+    at_least? limit, &
   end
 
   # Check whether the condition given in the block
   # occurs at most limit times in the collection
-  def at_most?(limit, &block)
-    occurrences_of(&block) <= limit
+  def at_most?(limit, &)
+    occurrences_of(&) <= limit
   end
 
   # Check whether the condition given in the block
   # occurs at least limit times in the collection
-  def at_least?(limit, &block)
-    occurrences_of(&block) >= limit
+  def at_least?(limit, &)
+    occurrences_of(&) >= limit
   end
 
   # Count how often the condition given in the block
