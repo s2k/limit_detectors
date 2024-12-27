@@ -4,8 +4,8 @@ require 'limit_detectors'
 
 class Example
   include Enumerable
-  def each(&block)
-    ('a'..'d').each(&block)
+  def each(&)
+    ('a'..'d').each(&)
   end
 end
 
