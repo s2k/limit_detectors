@@ -6,20 +6,19 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'ostruct', '~> 0.6.0'
+gem 'reline', '~> 0.6.0'
 gem 'rubocop-rake', '~> 0.6.0'
-gem 'rubocop-rspec', '~> 3.1'
+gem 'rubocop-rspec', '~> 3.3'
 
 group :development, :test do
   gem 'bundler'
   gem 'guard-rspec'
-  gem 'pry', '~> 0.14.2'
-  gem 'pry-doc', '~> 1.4.0'
-  gem 'rake', '~> 13.0.6'
+  gem 'pry', '~> 0.15.2'
+  gem 'pry-doc', '~> 1.5.0'
+  gem 'rake', '~> 13.2.1'
   gem 'rb-fsevent'
-  gem 'rspec', '~> 3.12'
+  gem 'rspec', '~> 3.13'
   gem 'rubocop'
   gem 'terminal-notifier'
   gem 'terminal-notifier-guard'
 end
-
-gem "reline", "~> 0.5.10"
