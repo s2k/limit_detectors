@@ -1,4 +1,4 @@
-Copyright (c) 2014 Stephan Kämper
+Copyright (c) 2014 Stephan Kämper
 
 MIT License
 
