@@ -19,7 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        ruby-version: ['3.1.6', '3.2.6', '3.3.6', '3.4.1', 'jruby', 'truffleruby']
+        ruby-version: ['3.2.9', '3.3.9', '3.4.6', 'jruby', 'truffleruby']
 
     steps:
     - uses: actions/checkout@v3
