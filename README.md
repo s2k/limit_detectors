@@ -79,10 +79,9 @@ puts e.at_most?(42) { |c| 'b' == c }
 
 This gem is tested with these Ruby versions (MRI, unless JRuby):
 
-  - 3.1.x
-  - 3.2.x
-  - 3.3.x
-  - 3.4.x
+- 3.2.9
+- 3.3.9
+- 3.4.6
 
 as well as a current version of JRuby and TruffleRuby
 
