@@ -5,10 +5,10 @@ source 'https://rubygems.org'
 # Specify your gem's dependencies in limit_detectors.gemspec
 gemspec
 
-gem 'ostruct', '~> 0.6.0'
+gem 'ostruct'
 gem 'reline', '~> 0.6.0'
-gem 'rubocop-rake', '~> 0.6.0'
-gem 'rubocop-rspec', '~> 3.3'
+gem 'rubocop-rake', '~> 0.7'
+gem 'rubocop-rspec', '~> 3.7'
 
 group :development, :test do
   gem 'bundler'
