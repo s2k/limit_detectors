@@ -13,8 +13,6 @@ task :console do
   exec 'pry -I ./lib -r limit_detectors'
 end
 
-RuboCop::RakeTask.new do |task|
-  task.requires << 'rubocop-rake'
-end
+RuboCop::RakeTask.new
 
 task default: %i[spec rubocop]
