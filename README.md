@@ -81,7 +81,7 @@ This gem is tested with these Ruby versions (MRI, unless JRuby):
 
 - 3.2.9
 - 3.3.9
-- 3.4.6
+- 3.4.7
 
 as well as a current version of JRuby and TruffleRuby
 
